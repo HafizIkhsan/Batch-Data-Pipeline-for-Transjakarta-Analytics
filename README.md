@@ -6,6 +6,8 @@ This project builds a data pipeline using the Transjakarta Transportation Transa
 
 The pipeline implements a simplified Medallion Architecture:
 
+![Medallion Architecture (source: blog.bismart.com)](https://blog.bismart.com/hs-fs/hubfs/Arquitectura_Medallion_Pasos.jpg?width=2631&height=984&name=Arquitectura_Medallion_Pasos.jpg)
+
 🥉 Bronze Layer → Raw transaction data
 
 🥈 Silver Layer → Cleaned & validated data
@@ -31,12 +33,13 @@ Dataset Source:
 <hr>
 
 ### 🏗️ Architecture
+
 Raw CSV
-⬇<br>
+<br> ⬇ <br>
 Bronze (Raw Load)
-⬇<br>
+<br> ⬇ <br>
 Silver (Data Cleaning & Feature Engineering)
-⬇<br>
+<br> ⬇ <br>
 Gold (Corridor Aggregation & Ranking)
 
 <hr>
@@ -62,7 +65,7 @@ For each corridor:
 Python <br>
 Pandas <br>
 SQLAlchemy <br>
-PostgreSQL / MySQL (depending on your config) <br>
+PostgreSQL <br>
 Kaggle Dataset
 
 <hr>
@@ -82,3 +85,17 @@ project/
 ├── README.md
 └── requirements.txt
 ```
+
+<hr>
+
+### 🚀 How to Run
+Download dataset from Kaggle
+Configure database in config.py
+Configure docker-compose.yml
+Run Docker
+Run:
+python ingestion.py
+python transform.py
+python silver_to_gold.py
+
+Gold layer table will be created in the database.
