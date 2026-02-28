@@ -89,13 +89,14 @@ project/
 <hr>
 
 ### 🚀 How to Run
-Download dataset from Kaggle
-Configure database in config.py
-Configure docker-compose.yml
-Run Docker
+Download dataset from Kaggle <br>
+Configure database in config.py <br>
+Configure docker-compose.yml <br>
+Run Docker <br>
 Run:
-python ingestion.py
-python transform.py
-python silver_to_gold.py
+python ingestion.py <br>
+python transform.py <br>
+python silver_to_gold.py <br>
 
-Gold layer table will be created in the database.
+Gold layer table will be created in the database. <br>
+![Gold Layer](assets/gold_layer.png)
