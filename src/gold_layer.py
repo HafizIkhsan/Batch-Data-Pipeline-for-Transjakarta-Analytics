@@ -1,7 +1,7 @@
 import pandas as pd
 from config import database
 
-def silver_to_gold():
+def gold_layer():
     df = pd.read_sql('SELECT * FROM silver_layer', database)
 
     print(f"Transforming data from silver_layer with {len(df)} records.")
@@ -9,6 +9,7 @@ def silver_to_gold():
     corridor_summary = (
         df.groupby('corridorID').agg(
             total_trips = ('transID', 'count'),
+            avg_age = ('age', 'mean'),
             avg_trip_duration = ('trip_duration_minutes', 'mean'),
             total_revenue = ('payAmount', 'sum'),
             avg_revenue = ('payAmount', 'mean'),
@@ -50,4 +51,4 @@ def silver_to_gold():
     )
 
 if __name__ == "__main__":
-    silver_to_gold()
+    gold_layer()
