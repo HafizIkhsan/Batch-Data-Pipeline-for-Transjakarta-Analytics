@@ -51,6 +51,7 @@ For each corridor:
 - total_revenue
 - avg_revenue
 - revenue_per_minute
+- avg_age
 - traffic_share
 - revenue_share
 - duration_efficiency
