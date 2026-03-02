@@ -9,11 +9,11 @@ def gold_layer():
     corridor_summary = (
         df.groupby('corridorID').agg(
             total_trips = ('transID', 'count'),
-            avg_age = ('age', 'mean'),
             avg_trip_duration = ('trip_duration_minutes', 'mean'),
             total_revenue = ('payAmount', 'sum'),
             avg_revenue = ('payAmount', 'mean'),
-            revenue_per_minute = ('payAmount', lambda x: (x.sum() / df.loc[x.index, 'trip_duration_minutes'].sum()) if df.loc[x.index, 'trip_duration_minutes'].sum() > 0 else 0)
+            revenue_per_minute = ('payAmount', lambda x: (x.sum() / df.loc[x.index, 'trip_duration_minutes'].sum()) if df.loc[x.index, 'trip_duration_minutes'].sum() > 0 else 0),
+            avg_age=('age', 'mean')
         )
         .reset_index()
     )
@@ -29,6 +29,7 @@ def gold_layer():
     corridor_summary['duration_efficiency'] = (
         corridor_summary.avg_trip_duration / corridor_summary.avg_trip_duration.mean()
     )
+
 
     corridor_summary['volume_category'] = pd.qcut(
         corridor_summary.total_trips,
@@ -49,6 +50,8 @@ def gold_layer():
         if_exists='replace',
         index=False
     )
+
+    print(f"Data transformed and saved to 'gold_layer' successfully.")
 
 if __name__ == "__main__":
     gold_layer()
